@@ -1,11 +1,12 @@
-import React from "react";
-import Container from "@material-ui/core/Container";
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
-import CreateContractForm from "../components/CreateContractForm";
-import ConnectWallet from "../components/ConnectWallet";
+import React, { useContext, useEffect } from "react";
+
+import Enter from "./enter";
 import LandingPage from "./LandingPage";
+import { UserContext } from "../lib/context";
+import toast from "react-hot-toast";
 
 export default function Index() {
-    return <LandingPage />;
+  const { user, username, address, setAddress } = useContext(UserContext);
+
+  return <div>{username ? <Enter /> : <LandingPage />}</div>;
 }
